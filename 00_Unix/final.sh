@@ -4,7 +4,7 @@
 
 #part 1: just the real words
 uconv -x upper | 			#makes all upper
-gsed 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÜ]\+/\n/g' | 			
+gsed 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZßÖÄÜ]\+/\n/g' | 			
 					#replaces non-alphabetical with newline
 					#[A-Z] doesn't include umlaut vowels
 sort | 					#sorts 
@@ -18,7 +18,8 @@ rev |
 
 
 #part 3: filter out vowel and 'rest of' word
-gsed 's/\([AEIOUYÜÖÄ][A-Z]*\)/\n/g'| 	#replaces VC(C(C(C...))) with null
+gsed 's/\([AEIOUYÜÖÄ][ABCDEFGHIJKLMNOPQRSTUVWXYZßÖÄÜ]*\)/\n/g'| 	
+					#replaces VC(C(C(C...))) with null
 grep '[A-Z]' |				#filters out empty lines or lines with spaces
 rev|					#return to normal
 sort | uniq -c 	| sort -rn		#sorts, deletes duplicates, counts, sorts again
