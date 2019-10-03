@@ -5,10 +5,11 @@
 #accuracy percentage: 1 error per 100 lines. not bad! there was another 'error' which turned out to be a problem with the wiki, not the segmenter
 #qualitative: 
 #kinds of mistakes:in-line quotation of the type text: "quote." perhaps due to the period being inside of the quote.
-
+#see 01/Tokenisation/pragmatic_segmenter/lib/ps_test.txt
 
 #punkt
 #quantitative:
-#accuracy percentage:
+#accuracy percentage: 2 per 100 lines
 #qualitative:
-#kinds of mistakes:
+#kinds of mistakes: accidentally created a boundary after t.B. (low german for z.B.). Also artificially created a boundary after the combined abbreviation-parentheses in "Anion (n.) ist..."
+#see 01_Tokenisation/nds_wiki_nltk_segmented.txt
