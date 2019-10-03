@@ -1,6 +1,6 @@
 require 'pragmatic_segmenter'
 
-lang = "en"
+lang = "de"
 if ARGV[0]
     lang=ARGV[0]
 end

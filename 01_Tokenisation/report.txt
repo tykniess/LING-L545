@@ -1,0 +1,14 @@
+#tried two sentence tokenisers, pragmatic_segmenter and nltk's PUNKT
+
+#pragmatic_segmenter worked well once I set the language settings in my segmenter.rb file to "de" as I am working with a niederdeutsch corpus:
+#quantitative:
+#accuracy percentage: 1 error per 100 lines. not bad! there was another 'error' which turned out to be a problem with the wiki, not the segmenter
+#qualitative: 
+#kinds of mistakes:in-line quotation of the type text: "quote." perhaps due to the period being inside of the quote.
+
+
+#punkt
+#quantitative:
+#accuracy percentage:
+#qualitative:
+#kinds of mistakes:
