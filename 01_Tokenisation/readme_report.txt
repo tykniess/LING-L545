@@ -9,7 +9,11 @@
 
 #punkt
 #quantitative:
-#accuracy percentage: 2 per 100 lines
+#accuracy percentage: 2 errors per 100 lines
 #qualitative:
 #kinds of mistakes: accidentally created a boundary after t.B. (low german for z.B.). Also artificially created a boundary after the combined abbreviation-parentheses in "Anion (n.) ist..."
-#see 01_Tokenisation/nds_wiki_nltk_segmented.txt
+#see 01_Tokenisation/segmented.txt
+
+
+
+

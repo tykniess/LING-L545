@@ -1,13 +1,15 @@
-name = input('what is filename?')
+import sys
 from nltk import sent_tokenize
 
 list = []
 
-with open(name, 'r') as file:
-	for line in file:
-		sent_tokenize(line, language = 'german')
-		list.append(line)
+for line in sys.stdin:
+	for sent in sent_tokenize(line, language = 'german'):
+                list.append(sent)
 
-with open(name+'segmented.txt', 'w') as file:
-	for item in list:
-		file.write('\n' + item)
+for line in list:
+        print (line + '\n')
+
+#with open('newfile_segmented.txt', 'w') as file:
+#	for item in list:
+#		file.write('\n' + item)
