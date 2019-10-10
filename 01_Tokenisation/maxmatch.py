@@ -49,8 +49,12 @@ def MaxMatch(sentence):
                                 sentence = remainder
                                 i = len(sentence)
                         else:
-                                i=i-1
-                
+                                if i != 1:
+                                        i=i-1
+                                else: #this catches words not in the dictionary
+                                        l2.append(firstword)
+                                        sentence = remainder
+                                        i = len(sentence)
                                 
 for sent in l1:
         MaxMatch(sent)
