@@ -1,0 +1,36 @@
+Multichar_Symbols
+
+%<n%>                ! Имя существительное, Noun
+%<pl%>		     ! Множественное число, Plural
+%<nom%>              ! Именительный падеж, Nominative
+%<ins%>              ! Творительный падеж, Instrumental
+
+%{A%}                ! Архифонема [а] или [е], Archiphoneme [a] or [e]
+
+%>                   ! Граница морфемы, Morpheme boundary
+
+
+
+LEXICON Root
+
+Nouns;
+
+LEXICON CASES
+
+%<ins%>:%>п%{A%} # ;
+
+LEXICON PLURAL
+
+	     CASES ;
+%<pl%>:%>сем CASES ;
+
+LEXICON N
+
+%<n%>: PLURAL ;
+
+LEXICON Nouns
+
+урам:урам N ;     ! "улица", "street"
+пахча:пахча N ;   ! "сад", "garden"
+хула:хула N ;     ! "город", "city"
+канаш:канаш N ;   ! "совет", "council"
