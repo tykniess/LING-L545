@@ -3,10 +3,12 @@ Multichar_Symbols
 %<n%>                ! Имя существительное, Noun
 %<pl%>		     ! Множественное число, Plural
 %<nom%>              ! Именительный падеж, Nominative
+%<gen%>		     ! 			, Genitive
 %<ins%>              ! Творительный падеж, Instrumental
 
 %{A%}                ! Архифонема [а] или [е], Archiphoneme [a] or [e]
-
+%{Ă%}                ! Архифонема [ӑ] или [ӗ] или 0, Archiphoneme [ӑ] or [ӗ] or 0
+%{м%}                ! Архифонема [м] или 0, Archiphoneme [м] or 0
 
 %>                   ! Граница морфемы, Morpheme boundary
 
@@ -18,12 +20,14 @@ Nouns;
 
 LEXICON CASES
 
+%<gen%>:%>%{Ă%}н # ;
 %<ins%>:%>п%{A%} # ;
+
 
 LEXICON PLURAL
 
-	     CASES ;
-%<pl%>:%>сем CASES ;
+	         CASES ;
+%<pl%>:%>се%{м%} CASES ;
 
 LEXICON N
 

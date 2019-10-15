@@ -1,7 +1,9 @@
 Alphabet
   а ӑ е ё ӗ и о у ӳ ы э ю я б в г д ж з к л м н п р с ҫ т ф х ц ч ш щ й ь ъ
   А Ӑ Е Ё Ӗ И О У Ӳ Ы Э Ю Я Б В Г Д Ж З К Л М Н П Р С Ҫ Т Ф Х Ц Ч Ш Щ Й Ь Ъ 
- %{A%}:а %{A%}:е
+ %{A%}:а %{A%}:е 
+ %{м%}:м %{м%}:0 
+ %{Ă%}:ӑ %{Ă%}:ӗ %{Ă%}:0
 ;
 
 
@@ -14,8 +16,9 @@ FrontVow = ӗ э и ӳ е ;
 
 Cns = б в г д ж з к л м н п р с ҫ т ф х ц ч ш щ й ь ъ ; 
 
+Vls = ӑ а ы о у я ё ю ӗ э и ӳ е ;
 
-
+ArchiCns = %{м%};
 
 Rules
 
@@ -26,3 +29,18 @@ Rules
 
 "Back vowel harmony for archiphoneme {A}"
 %{A%}:а <=> BackVow: [ Cns: | %>: ]+ _ ; 
+
+"Back vowel harmony for archiphoneme {Ă}"
+%{Ă%}:ӑ <=> BackVow: [ ArchiCns: | Cns: | %>: ]+ _ ;
+        except
+        	%{м%}: %>:  _ н ;
+		:Vls %>: _ ;
+
+"Delete archiphoneme {Ă} between {м} and н"		
+%{Ă%}:0 <=> %{м%}: %>:  _ :н ;
+
+"Delete archiphoneme {м} before н"
+%{м%}:0 <=> _ %>: %{Ă%}: :н ;
+
+"Archiphoneme {Ă} does not surface following stem vowel"
+%{Ă%}:0 <=> :Vls %>: _ ;
