@@ -1,1 +1,0 @@
- hfst-fst2txt HISTOGRAM_FILENAME | python3 att2dot.py  | dot -Tpng -oOUTPUT_FILENAME
