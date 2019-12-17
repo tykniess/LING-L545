@@ -31,7 +31,7 @@ Rules
 "Back vowel harmony for archiphoneme {A}"
 %{A%}:а <=> BackVow: [ Cns: | %>: ]+ _ ; 
 
-"Back vowel harmony for archiphoneme {Ă}"
+c "Back vowel harmony for archiphoneme {Ă}"
 %{Ă%}:ӑ <=> BackVow: [ ArchiCns: | Cns: | %>: ]+ _ ;
         except
         	%{м%}: %>:  _ н ;
