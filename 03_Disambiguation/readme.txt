@@ -1,26 +1,16 @@
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%Tagger Comparison%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%UD tagger.%
+Tagger Comparison
+=====
+1. UD tagger.
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 UPOS       |     94.74 |     94.74 |     94.74 |     94.74
-%perceptron tagger.%
+2. perceptron tagger.
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 UPOS       |     90.52 |     90.52 |     90.52 |     90.52
-%unigram tagger.%
+3. unigram tagger.
 Accuracy of 1.3777513830361266e-05%
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%Constraint Grammar%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-nano rus.cg3
-
-  GNU nano 2.0.6                             File: rus.cg3                                                                  
+Constraint Grammar
+=====
 
 DELIMITERS = "." ;
 
@@ -41,13 +31,10 @@ SELECT CCONJ IF (-1C VERB) ;
 
 
 
+Perceptron Tagger
+=====
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%Perceptron Tagger%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%out of the box tagger:
+* out of the box tagger:
 % python3 conll17_ud_eval.py --verbose UD_Dutch-Alpino/nl_alpino-ud-test.conllu nl-ud-test.out 
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 -----------+-----------+-----------+-----------+-----------
@@ -62,13 +49,7 @@ Lemmas     |    100.00 |    100.00 |    100.00 |    100.00
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00
 
-%in tagger.py, I added a category for a 2-character suffix (preterite forms). This didn't appear to have an immense effect on the dev file.
-
-all:
-	cat UD_Dutch-Alpino/nl_alpino-ud-train.conllu | python3 ../../conllu-perceptron-tagger/tagger.py -t nl-ud.dat ;
- 	cat UD_Dutch-Alpino/nl_alpino-ud-dev.conllu  | python3 ../../conllu-perceptron-tagger/tagger.py nl-ud.dat > nl-ud-dev.out ;
- 	python3 conll17_ud_eval.py --verbose UD_Dutch-Alpino/nl_alpino-ud-dev.conllu nl-ud-dev.out 
-
+* in tagger.py, I added a category for a 2-character suffix (preterite forms). This didn't appear to have an immense effect on the dev file. 
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 -----------+-----------+-----------+-----------+-----------
 Tokens     |    100.00 |    100.00 |    100.00 |
@@ -82,7 +63,7 @@ Lemmas     |    100.00 |    100.00 |    100.00 |    100.00
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00
 
-%I then added a similar 2-character prefix option 
+* I then added a similar 2-character prefix option 
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 -----------+-----------+-----------+-----------+-----------
 Tokens     |    100.00 |    100.00 |    100.00 |
@@ -96,7 +77,7 @@ Lemmas     |    100.00 |    100.00 |    100.00 |    100.00
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00
 
-%I then added a similar 3-character prefix option ('aan-', 'ver-', 'ont-', etc.)
+* I then added a similar 3-character prefix option ('aan-', 'ver-', 'ont-', etc.)
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 -----------+-----------+-----------+-----------+-----------
 Tokens     |    100.00 |    100.00 |    100.00 |
@@ -110,12 +91,10 @@ Lemmas     |    100.00 |    100.00 |    100.00 |    100.00
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00
 
-%This actually did not help, so I deleted it and tried something else. I removed the 3-character suffix.
+* This actually did not help, so I deleted it and tried something else. I removed the 3-character suffix.
 
-%This made it worse, so I reverted.
-%I decided having the prefix information of i+2 would be important in In simple Subject-Auxiliary-Object-PP sentences since PP almost always begins with 'ge'.
-%This helped.
-
+* This made it worse, so I reverted.
+* I decided having the prefix information of i+2 would be important in In simple Subject-Auxiliary-Object-PP sentences since PP almost always begins with 'ge'. This helped.
 Iter 4: 179987/185999=96.76772455765891
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 -----------+-----------+-----------+-----------+-----------
@@ -130,7 +109,7 @@ Lemmas     |    100.00 |    100.00 |    100.00 |    100.00
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00
 
-% I then did it with i+1 prefixes and got slightly improved results.
+* I then did it with i+1 prefixes and got slightly improved results.
 Metrics    | Precision |    Recall |  F1 Score | AligndAcc
 -----------+-----------+-----------+-----------+-----------
 Tokens     |    100.00 |    100.00 |    100.00 |
@@ -144,20 +123,18 @@ Lemmas     |    100.00 |    100.00 |    100.00 |    100.00
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%LOG%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
+LOGS
+=====
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%Adding UDPipe to the PATH
+
+Adding UDPipe to the PATH
+-----
 
 $ PATH=/Users/tyler/udpipe/src/:$PATH
 $ export PATH     
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%Training the UD tagger.
+Training the UD tagger.
+-----
 
 $ cat fi_tdt-ud-train.conllu | udpipe --tokenizer=none --parser=none --train fi.udpipe
 Loading training data: done.
@@ -190,8 +167,8 @@ Iteration 19: done, accuracy 99.88%
 Iteration 20: done, accuracy 99.90%
 The trained UDPipe model was saved.
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%testing the trained tagger.
+testing the trained tagger.
+-----
 $ cat fi_tdt-ud-test.conllu| udpipe --tag fi.udpipe > fi_tdt-ud-test_output.connlu
 Loading UDPipe model: done.
 
@@ -211,8 +188,10 @@ AllTags    |     89.98 |     89.98 |     89.98 |     89.98
 Lemmas     |     84.97 |     84.97 |     84.97 |     84.97
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%trying a perceptron tagger
+
+trying a perceptron tagger
+-----
+
 $ git clone https://github.com/ftyers/conllu-perceptron-tagger.git
 $ cd conllu-perceptron-tagger
 $ conllu-perceptron-tagger % cat ../UD_Finnish-TDT/fi_tdt-ud-train.conllu| python3 tagger.py -t model.dat
@@ -245,15 +224,14 @@ Lemmas     |    100.00 |    100.00 |    100.00 |    100.00
 UAS        |    100.00 |    100.00 |    100.00 |    100.00
 LAS        |    100.00 |    100.00 |    100.00 |    100.00
 
-%%%%%%%%%%%%%%%%%%%%%%%%
+unigram tagger
+-----
 %I made a veeeeeery simple unigram tagger (which is basically just a unigram dictionary lookup tool). It performs absolutely terribly: nltk-fi-tagger.py
 %To improve it I would suggest looking at headwords and not just surface forms, syntactic annotation and context.
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
+morphological analysis
+-----
 
 echo "Однако стиль работы Семена Еремеевича заключался в том, чтобы принимать всех желающих и лично вникать в дело." | python3 ud-scripts/conllu-analyser.py ru-analyser.tsv | vislcg3 -t -g rus.cg3
 
