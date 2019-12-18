@@ -1,0 +1,11 @@
+Language	num_VO	num_OV
+Afrikaans	641	1198
+Russian	1778	428
+German	3599	3485
+Gothic	1394	940
+Korean	481	3641
+Latin	5263	5008
+Marathi	19	183
+North_Sami	810	199
+Portuguese	7350	1478
+Slovak	3127	1901
