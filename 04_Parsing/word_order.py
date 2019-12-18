@@ -80,6 +80,8 @@ plt.ylim([0,1])
 plt.xlabel('OV') # Set the x and y axis labels
 plt.ylabel('VO')
 for j in labels:  # Add labels to each of the points
-    plt.text(x[j]-0.03, y[j]-0.03, labels[j], fontsize=5.5)
+    plt.text(x[j]-0.05, y[j]-0.05, labels[j], fontsize=5.5)
 plt.savefig('languages')
+for k in labels: #add something of a legend
+    plt.text(0.95, 0.95, labels[k], fontsize = 9)
 #plt.show()
